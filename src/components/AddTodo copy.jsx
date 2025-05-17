@@ -14,7 +14,17 @@ import { RiAddLargeLine, RiCheckLine } from '@remixicon/react';
 import React, { useState, useRef, useContext } from 'react';
 import { TodoContext } from '../context/ToDoContext';
 
-const AddTodo = ({ swatches }) => {
+const swatches = [
+  '#F5FFC6',
+  '#CCFBFE',
+  '#FFCCC9',
+  '#D0F1BF',
+  '#CBC7BD',
+  '#DEC9FF',
+  '#FFE7D1',
+];
+
+const AddTodo = () => {
   const [newTodo, setNewTodo] = useState({
     title: '',
     note: '',
@@ -26,6 +36,8 @@ const AddTodo = ({ swatches }) => {
 
   const saveEditHandler = () => {
     const data = newTodo;
+    console.log(data);
+
     if (newTodo.title !== '') {
       addTodo(newTodo.title, newTodo.note, newTodo.color.valueAsString);
       setNewTodo({
@@ -42,29 +54,13 @@ const AddTodo = ({ swatches }) => {
 
   return (
     <Dialog.Root placement={'center'}>
-      <Dialog.Trigger asChild>
-        <VStack
-          w={'100%'}
-          h={'100%'}
-          bgColor={'white'}
-          _dark={{ bgColor: 'whiteAlpha.300' }}
-          p={5}
-          display={'flex'}
-          alignItems={'center'}
-          justifyContent={'center'}
-          borderRadius={10}
-          _hover={{ shadow: 'md' }}>
-          <Heading className='raleway' fontSize={40}>
-            <RiAddLargeLine />
-          </Heading>
-        </VStack>
-      </Dialog.Trigger>
+      <Dialog.Trigger asChild></Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Add a To-Do</Dialog.Title>
+              <Dialog.Title>Edit To-Do</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
               <Field.Root required py={2}>
@@ -74,17 +70,15 @@ const AddTodo = ({ swatches }) => {
                 <Input
                   placeholder='Title'
                   type='text'
-                  value={newTodo.title}
-                  onChange={(e) =>
-                    setNewTodo({ ...newTodo, title: e.target.value })
-                  }
+                  value={editTitle}
+                  onChange={(e) => setEditTitle(e.target.value)}
                 />
               </Field.Root>
               <Field.Root py={2}>
                 <Field.Label>Note</Field.Label>
                 <Textarea
                   placeholder='Note'
-                  value={newTodo.note}
+                  value={editNote}
                   onChange={(e) =>
                     setNewTodo({ ...newTodo, note: e.target.value })
                   }

@@ -16,7 +16,7 @@ const Filter = () => {
         <Tabs.List
           borderRadius={10}
           className='inter'
-          gap={5}
+          gap={[1, 5]}
           py={2}
           px={2}
           transition={'0.5s'}>
@@ -27,7 +27,7 @@ const Filter = () => {
             value='all'
             transition={'0.3s'}
             _selected={{
-              borderRadius: 5,
+              borderRadius: 8,
               color: 'white',
               bg: 'blackAlpha.800',
             }}>
@@ -38,7 +38,7 @@ const Filter = () => {
             value='pending'
             transition={'0.3s'}
             _selected={{
-              borderRadius: '10px',
+              borderRadius: 8,
               color: 'red.400',
               bg: 'black',
             }}>
@@ -49,7 +49,7 @@ const Filter = () => {
             value='completed'
             transition={'0.3s'}
             _selected={{
-              borderRadius: '10px',
+              borderRadius: 8,
               color: 'green.400',
               bg: 'black',
             }}>
