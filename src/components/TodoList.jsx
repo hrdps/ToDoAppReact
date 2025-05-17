@@ -20,9 +20,11 @@ const TodoList = () => {
     <VStack
       w={'100%'}
       h={'100vh'}
-      bgColor={'blackAlpha.200'}
-      _dark={{ bgColor: 'whiteAlpha.100' }}
+      shadow={'sm'}
+      bgColor={'whiteAlpha.500'}
+      _dark={{ bgColor: 'whiteAlpha.300' }}
       borderRadius={10}
+      backdropFilter={'blur(10px)'}
       overflowY={'scroll'}
       overflowX={'hidden'}>
       <Grid
@@ -33,9 +35,9 @@ const TodoList = () => {
           lg: '1fr 1fr 1fr',
           xl: '1fr 1fr 1fr 1fr',
         }}
-        gap={10}
+        gap={[5, 5, 10, 10]}
         w={'100%'}
-        p={10}
+        p={[5, 5, 10, 10]}
         alignItems='stretch'>
         <AddTodo swatches={swatches} />
         {filteredTodos.map((item, index) => (

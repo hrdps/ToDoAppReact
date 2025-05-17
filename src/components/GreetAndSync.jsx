@@ -65,28 +65,33 @@ const GreetAndSync = () => {
   return (
     <HStack
       w={'100%'}
-      bgColor={'blackAlpha.200'}
-      _dark={{ bgColor: 'whiteAlpha.200' }}
+      bgColor={'whiteAlpha.500'}
+      backdropFilter={'blur(10px)'}
+      _dark={{ bgColor: 'whiteAlpha.300' }}
+      shadow={'sm'}
       borderRadius={10}
       p={[5, 5, 10, 10]}>
-      <HStack w={'100%'} display={'flex'} alignItems={['center', 'center']}>
-        <Heading
-          fontWeight={'900'}
-          className='doto'
-          fontSize={[18, 22, 24, 28, 30, 30]}
-          w={'80%'}>
-          {getGreeting()}
-          {'  '}
-          {formatDateTime()}
-        </Heading>
-        <RiDownloadCloud2Line
-          size={30}
-          cursor={'pointer'}
-          width='20%'
-          onClick={() => {
-            fetchAndAddRandomTodos();
-          }}
-        />
+      <HStack w={'100%'}>
+        <VStack w={'80%'} display={'flex'} alignItems={'flex-start'}>
+          <Heading
+            fontWeight={'900'}
+            className='doto'
+            fontSize={[18, 22, 24, 28, 30, 30]}
+            w={'100%'}>
+            {getGreeting()}
+            {'  '}
+            {formatDateTime()}
+          </Heading>
+        </VStack>
+        <VStack width='20%' display={'flex'} alignItems={'flex-end'}>
+          <RiDownloadCloud2Line
+            size={30}
+            cursor={'pointer'}
+            onClick={() => {
+              fetchAndAddRandomTodos();
+            }}
+          />
+        </VStack>
       </HStack>
     </HStack>
   );

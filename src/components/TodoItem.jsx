@@ -92,7 +92,10 @@ const TodoItem = ({ todo_item, swatches }) => {
             </Menu.Trigger>
             <Portal>
               <Menu.Positioner>
-                <Menu.Content>
+                <Menu.Content
+                  bgColor={'whiteAlpha.800'}
+                  _dark={{ bgColor: 'blackAlpha.800' }}
+                  backdropFilter={'blur(10px)'}>
                   <Menu.Item
                     value='edit'
                     cursor={'pointer'}
@@ -109,7 +112,7 @@ const TodoItem = ({ todo_item, swatches }) => {
                     cursor={'pointer'}
                     value='delete'
                     color='fg.error'
-                    _hover={{ bg: 'bg.error', color: 'fg.error' }}
+                    _hover={{ bg: 'red.100', color: 'fg.error' }}
                     onClick={() => {
                       deleteTodo(todo_item.id);
                     }}>

@@ -10,6 +10,7 @@ const Filter = () => {
   return (
     <>
       <Tabs.Root
+        shadow={'sm'}
         variant='enclosed'
         defaultValue={'all'}
         onValueChange={handleTabChange}>
