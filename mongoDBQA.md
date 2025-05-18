@@ -47,3 +47,48 @@ The expected output should be something like this:
 ```
 
 # Answer:
+
+```javascript
+db.sales.aggregate([
+  //This breaks the items array into separate documents
+  {
+    $unwind: '$items',
+  },
+
+  //To get the month from the date, and also calculating revenue
+  {
+    $project: {
+      store: 1,
+      month: { $dateToString: { format: '%Y-%m', date: '$date' } },
+      revenue: { $multiply: ['$items.quantity', '$items.price'] },
+      price: '$items.price',
+    },
+  },
+
+  //Grouping by store and month to add
+  {
+    $group: {
+      _id: { store: '$store', month: '$month' },
+      totalRevenue: { $sum: '$revenue' },
+      totalPrice: { $sum: '$price' },
+      itemCount: { $sum: 1 },
+    },
+  },
+
+  //Format the output and average price
+  {
+    $project: {
+      _id: 0,
+      store: '$_id.store',
+      month: '$_id.month',
+      totalRevenue: 1,
+      averagePrice: { $divide: ['$totalPrice', '$itemCount'] },
+    },
+  },
+
+  //Sort by store and month
+  {
+    $sort: { store: 1, month: 1 },
+  },
+]);
+```
