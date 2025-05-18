@@ -1,5 +1,7 @@
 # Todo App
 
+# Live Link: (https://to-do-app-react-blue-kappa.vercel.app)
+
 A modern and minimalistic Todo application built using **React**, **Chakra UI**, and **Remix Icons**. It allows users to add, manage, and store todos with optional notes and color tags. Todos are saved in **localStorage** for persistence.
 
 ## Features
