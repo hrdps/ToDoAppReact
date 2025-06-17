@@ -58,7 +58,7 @@ const GreetAndSync = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setNow(new Date());
-    }, 60 * 1000); // Update every 60 seconds
+    }, 10 * 1000); // Update every 60 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
